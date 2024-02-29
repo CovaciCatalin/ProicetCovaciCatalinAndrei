@@ -1,0 +1,50 @@
+using System;
+using System.Linq;
+
+class LimbajFormal
+{
+    static void Main()
+    {
+        string cuvant = "abc123";
+        
+        Console.WriteLine("Concatenare: " + Concat(cuvant, "xyz"));
+        Console.WriteLine("Repetare: " + Repeat(cuvant, 3));
+        Console.WriteLine("Inversare: " + Reverse(cuvant));
+        Console.WriteLine("Extracție: " + Extract(cuvant, 1, 4));
+        Console.WriteLine("Înlocuire: " + Replace(cuvant, "bc", "XX"));
+    }
+
+    
+
+    static string Concat(string s1, string s2)
+    {
+        return s1 + s2;
+    }
+
+    static string Repeat(string s, int n)
+    {
+        return new string(s.ToCharArray().SelectMany(c => Enumerable.Repeat(c, n)).ToArray());
+    }
+
+    static string Reverse(string s)
+    {
+        char[] chars = s.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+
+    static string Extract(string s, int start, int end)
+    {
+        return s.Substring(start, end - start + 1);
+    }
+
+    static string Replace(string s, string sub, string newSub)
+    {
+        int index = s.IndexOf(sub);
+        if (index != -1)
+        {
+            return s.Remove(index, sub.Length).Insert(index, newSub);
+        }
+        return s;
+    }
+}

@@ -1,0 +1,45 @@
+using System;
+using System.Text;
+
+class LimbajeFormale
+{
+    static void Main()
+    {
+        string s1 = "abc";
+        string s2 = "xyz";
+
+        string rezultatConcatenare = Concateneaza(s1, s2);
+        Console.WriteLine(rezultatConcatenare);
+
+        string rezultatInversare = Inverseaza(s1);
+        Console.WriteLine(rezultatInversare);
+
+        string rezultatSubstitutie = Substituie(s1, 'a', 'z');
+        Console.WriteLine(rezultatSubstitutie);
+
+        int lungimeS1 = Lungime(s1);
+        Console.WriteLine(lungimeS1);
+    }
+
+    static string Concateneaza(string s1, string s2)
+    {
+        return s1 + s2;
+    }
+
+    static string Inverseaza(string s)
+    {
+        char[] caractere = s.ToCharArray();
+        Array.Reverse(caractere);
+        return new string(caractere);
+    }
+
+    static string Substituie(string s, char a, char b)
+    {
+        return s.Replace(a, b);
+    }
+
+    static int Lungime(string s)
+    {
+        return s.Length;
+    }
+}
